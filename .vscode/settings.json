@@ -1,7 +1,0 @@
-{
-  "files.associations": {
-    "ft_utilsPrintf.C": "cpp",
-    "libprintf.h": "c",
-    "ft_uitoa.C": "cpp"
-  }
-}
