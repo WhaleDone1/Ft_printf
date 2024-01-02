@@ -6,7 +6,7 @@
 /*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 09:27:57 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/01/02 09:38:55 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/01/02 17:18:31 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,21 +57,3 @@ int	ft_printf(const char *s, ...)
 	va_end(paramslist);
 	return (len);
 }
-/*
-int main()
-{
-    char *str = "Hello, World!";
-    ft_printf("Test 1: %d, %c, %s, %p, %x, %%\n", 42, 'A', str, (void *)&str, 255);
-    ft_printf("Test 2: %i, %u, %X, %s, %p, %%\n", -42, 255, 0xABCD, str, (void *)&str);
-    ft_printf("Test 3: %c, %s, %p, %d, %x, %%\n", 'Z', str, (void *)&str, 123, 0xDEADBEEF);
-    printf("%d\n", ft_printf("Test 3: %c, %s, %p, %d, %x, %%\n", 'Z', str, (void *)&str, 123, 0xDEADBEEF));
-    ft_printf("%d", printf("Test 3: %c, %s, %p, %d, %x, %%\n", 'Z', str, (void *)&str, 123, 0xDEADBEEF));
-   
-    size_t i;
-
-    i = ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%ia%%%ub%%%xg%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%", 'A', "42", 42, 42, 42, 42, 42, 'B', "-42", -42, -42, -42, -42, 42, 'C', "0", 0, 0, 0, 0, 42, 0);
-    printf("\n%ld\n", i);
-    i = printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%ia%%%ub%%%xg%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%", 'A', "42", 42, 42, 42, 42, 42, 'B', "-42", -42, -42, -42, -42, 42, 'C', "0", 0, 0, 0, 0, 42, 0);
-    printf("\n%ld\n", i);
-    return 0;
-}*/

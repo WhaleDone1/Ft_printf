@@ -6,7 +6,7 @@
 /*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 09:44:04 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/01/02 09:45:34 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/01/02 17:19:52 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,23 @@ int	ft_putnbrptr_printf(unsigned long long p)
 {
 	int	len;
 
+	if (p == 0)
+	{
+		write(1, "(nil)", 5);
+		return (5);
+	}
 	len = 0;
 	len += write(1, "0x", 2);
-	if (p == 0)
+	ft_putprint_ptr(p);
+	len += ft_ptr_len(p);
+	return (len);
+
+	/*if (p == 0)
 		len += write(1, "0", 1);
 	else
 	{
 		ft_putprint_ptr(p);
 		len += ft_ptr_len(p);
 	}
-	return (len);
+	return (len);*/
 }

@@ -6,7 +6,7 @@
 /*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 09:39:26 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/01/02 09:42:55 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/01/02 15:24:22 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,11 @@ static void	ft_putprint_hex(unsigned int n, const char format)
 	else
 	{
 		if (n <= 9)
-		{
-			tmp = (n + '0');
-			write(1, &tmp, 1);
-		}
+			ft_putchar_printf(n + '0');
 		else
 		{
 			if (format == 'x')
-			{
-				tmp = (n - 10 + 'a');
-				write(1, &tmp, 1);
-			}
+				ft_putchar_printf(n - 10 + 'a');
 			if (format == 'X')
 			{
 				tmp = (n - 10 + 'A');

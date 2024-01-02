@@ -6,12 +6,11 @@
 /*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 09:26:39 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/01/02 09:27:41 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/01/02 14:28:04 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libprintf.h"
-// #include "libft.h"
 
 static size_t	count_digits(long nb)
 {
