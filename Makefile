@@ -1,32 +1,41 @@
-NAME = libftprintf
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/01/11 23:16:28 by bcarpent          #+#    #+#              #
+#    Updated: 2024/01/11 23:21:04 by bcarpent         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -f
-HEADER = libprintf.h
-FILES = ft_putnbrhexa_printf.c \
-        ft_putnbrptr_printf.c \
-        ft_utilsPrintf.c \
-        ft_itoa.c	\
-		ft_uitoa.c	\
-		ft_printf.c
+FLAGS = -Wall -Wextra -Werror
 
-OBJS_DIR = ./
-OBJS = $(addprefix $(OBJS_DIR), $(FILES:.c=.o))
+NAME = libftprintf.a
+SRCS =	ft_printf.c ft_utilsPrintf.c ft_putnbrptr_printf.c \
+	ft_putnbrhexa_printf.c ft_itoa.c ft_uitoa.c
 
-%.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) -c $< -o $@
+OBJS = ${SRCS:.c=.o}
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^
+DEPS = ${OBJS:.o=.d}
 
-all: $(NAME)
+all : ${NAME}
+-include ${DEPS}
 
-clean:
-	$(RM) $(OBJS)
+${NAME} : ${OBJS}
+	ar rcs ${NAME} ${OBJS}
 
-fclean: clean
-	$(RM) $(NAME)
+%.o : %.c
+	${CC} ${FLAGS} -MMD -MP -o $@ -c $<
 
-re: fclean all
+clean :
+	rm -f ${OBJS} ${DEPS}
 
-.PHONY: all clean fclean re
+fclean : clean
+	rm -f ${NAME}
+
+re : fclean all
+
+.PHONY : all clean fclean re

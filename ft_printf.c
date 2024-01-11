@@ -6,7 +6,7 @@
 /*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 09:27:57 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/01/08 10:54:48 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/01/12 00:08:53 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,13 @@ int	ft_printf(const char *s, ...)
 	int				i;
 	unsigned int	len;
 	va_list			paramslist;
-
+	
+	i = write(1, "test", 4);
+	if (i < 0)
+	{
+		write(2, "Error\n", 6);
+		return (-1);
+	}
 	i = 0;
 	len = 0;
 	va_start(paramslist, s);
