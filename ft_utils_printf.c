@@ -6,7 +6,7 @@
 /*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 09:45:51 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/01/12 02:40:36 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/01/12 03:59:04 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_putchar_printf(char c)
 	return (1);
 }
 
-unsigned int	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	int	i;
 

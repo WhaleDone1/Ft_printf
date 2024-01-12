@@ -6,7 +6,7 @@
 #    By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 23:16:28 by bcarpent          #+#    #+#              #
-#    Updated: 2024/01/11 23:21:04 by bcarpent         ###   ########.fr        #
+#    Updated: 2024/01/12 04:07:28 by bcarpent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror
 
 NAME = libftprintf.a
-SRCS =	ft_printf.c ft_utilsPrintf.c ft_putnbrptr_printf.c \
+SRCS =	ft_printf.c ft_utils_printf.c ft_putnbrptr_printf.c \
 	ft_putnbrhexa_printf.c ft_itoa.c ft_uitoa.c
 
 OBJS = ${SRCS:.c=.o}

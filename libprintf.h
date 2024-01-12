@@ -6,7 +6,7 @@
 /*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 14:13:56 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/01/08 10:45:05 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/01/12 04:01:14 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		ft_putnbru_printf(unsigned int n);
 int		ft_putnbrptr_printf(unsigned long long p);
 int		ft_putnbrhexa_printf(unsigned int n, const char format);
 int		ft_printf(const char *s, ...);
+size_t	ft_strlen(const char *str);
 char	*ft_itoa(int n);
 char	*ft_uitoa(unsigned int n);
 
