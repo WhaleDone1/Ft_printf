@@ -6,7 +6,7 @@
 #    By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 23:16:28 by bcarpent          #+#    #+#              #
-#    Updated: 2024/01/12 04:07:28 by bcarpent         ###   ########.fr        #
+#    Updated: 2024/01/12 04:12:41 by bcarpent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ ${NAME} : ${OBJS}
 	ar rcs ${NAME} ${OBJS}
 
 %.o : %.c
-	${CC} ${FLAGS} -MMD -MP -o $@ -c $<
+	${CC} ${FLAGS} -o $@ -c $<
 
 clean :
 	rm -f ${OBJS} ${DEPS}
