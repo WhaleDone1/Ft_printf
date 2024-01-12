@@ -6,7 +6,7 @@
 /*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 09:39:26 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/01/02 15:24:22 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/01/12 00:54:52 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ static int	ft_hexa_len(unsigned int n)
 	return (len);
 }
 
-static void	ft_putprint_hex(unsigned int n, const char format)
+static int	ft_putprint_hex(unsigned int n, const char format)
 {
-	char	tmp;
+	int	is_stdout_open;
 
+	is_stdout_open = 0;
 	if (n >= 16)
 	{
 		ft_putprint_hex(n / 16, format);
@@ -37,25 +38,34 @@ static void	ft_putprint_hex(unsigned int n, const char format)
 	else
 	{
 		if (n <= 9)
-			ft_putchar_printf(n + '0');
+			is_stdout_open = ft_putchar_printf(n + '0');
 		else
 		{
 			if (format == 'x')
-				ft_putchar_printf(n - 10 + 'a');
+				is_stdout_open = ft_putchar_printf(n - 10 + 'a');
 			if (format == 'X')
-			{
-				tmp = (n - 10 + 'A');
-				write(1, &tmp, 1);
-			}
+				is_stdout_open = ft_putchar_printf(n - 10 + 'A');
 		}
 	}
+	return (is_stdout_open);
 }
 
 int	ft_putnbrhexa_printf(unsigned int n, const char format)
 {
+	int	is_stdout_open;
+
 	if (n == 0)
-		return (write(1, "0", 1));
+	{
+		is_stdout_open = write(1, "0", 1);
+		if (is_stdout_open < 0)
+			return (-1);
+		return (1);
+	}
 	else
-		ft_putprint_hex(n, format);
+	{
+		is_stdout_open = ft_putprint_hex(n, format);
+		if (is_stdout_open < 0)
+			return (-1);
+	}
 	return (ft_hexa_len(n));
 }

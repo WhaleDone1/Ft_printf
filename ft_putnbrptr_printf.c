@@ -6,7 +6,7 @@
 /*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 09:44:04 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/01/08 10:14:30 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/01/12 02:34:19 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static int	ft_ptr_len(unsigned long long n)
 	return (len);
 }
 
-static void	ft_putprint_ptr(unsigned long long n)
+static int	ft_putprint_ptr(unsigned long long n)
 {
-	char	tmp;
+	int	is_stdout_open;
 
 	if (n >= 16)
 	{
@@ -37,21 +37,17 @@ static void	ft_putprint_ptr(unsigned long long n)
 	else
 	{
 		if (n <= 9)
-		{
-			tmp = (n + '0');
-			write(1, &tmp, 1);
-		}
+			is_stdout_open = ft_putchar_printf(n + '0');
 		else
-		{
-			tmp = (n - 10 + 'a');
-			write(1, &tmp, 1);
-		}
+			is_stdout_open = ft_putchar_printf(n - 10 + 'a');
 	}
+	return (is_stdout_open);
 }
 
 int	ft_putnbrptr_printf(unsigned long long p)
 {
 	int	len;
+	int	is_stdout_open;
 
 	if (p == 0)
 	{
@@ -59,8 +55,13 @@ int	ft_putnbrptr_printf(unsigned long long p)
 		return (5);
 	}
 	len = 0;
-	len += write(1, "0x", 2);
-	ft_putprint_ptr(p);
+	is_stdout_open = write(1, "0x", 2);
+	if (is_stdout_open < 0)
+		return (-1);
+	len += 2;
+	is_stdout_open = ft_putprint_ptr(p);
+	if (is_stdout_open < 0)
+		return (-1);
 	len += ft_ptr_len(p);
 	return (len);
 }

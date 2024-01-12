@@ -6,7 +6,7 @@
 /*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 09:27:57 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/01/12 00:08:53 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/01/12 03:39:53 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,32 +34,50 @@ static int	ft_printf_format(va_list paramslist, const char format)
 	return (len);
 }
 
-int	ft_printf(const char *s, ...)
+static int	ft_printf_strchr(va_list paramslist, const char *s)
 {
 	int				i;
+	int				is_stdout_open;
 	unsigned int	len;
-	va_list			paramslist;
-	
-	i = write(1, "test", 4);
-	if (i < 0)
-	{
-		write(2, "Error\n", 6);
-		return (-1);
-	}
-	i = 0;
+
+	i = -1;
 	len = 0;
-	va_start(paramslist, s);
-	while (s[i])
+	while (s[++i])
 	{
 		if (s[i] == '%')
 		{
-			len += ft_printf_format(paramslist, s[i + 1]);
+			is_stdout_open = ft_printf_format(paramslist, s[i + 1]);
+			if (is_stdout_open < 0)
+				return (-1);
 			i++;
 		}
 		else
-			len += ft_putchar_printf(s[i]);
-		i++;
+		{
+			is_stdout_open = ft_putchar_printf(s[i]);
+			if (is_stdout_open < 0)
+				return (-1);
+		}
+		len += is_stdout_open;
 	}
-	va_end(paramslist);
 	return (len);
+}
+
+int	ft_printf(const char *s, ...)
+{
+	va_list	paramslist;
+	int		len;
+
+	va_start(paramslist, s);
+	len = ft_printf_strchr(paramslist, s);
+	if (len < 0)
+	{
+		va_end(paramslist);
+		write(2, "Error\n", 6);
+		return (-1);
+	}
+	else
+	{
+		va_end(paramslist);
+		return (len);
+	}
 }
